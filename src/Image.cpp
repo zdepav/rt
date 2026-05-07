@@ -1,8 +1,8 @@
 #include "Image.hpp"
 
-#include <iostream>
-#include <cmath>
 #include <algorithm>
+#include <cmath>
+#include <iostream>
 #include "utils.hpp"
 
 #define ASSERT_SPNG(EXPR) if (int error; (error = (EXPR))) { \

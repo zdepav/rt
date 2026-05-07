@@ -6,8 +6,8 @@
 #include <vector>
 #include "Camera.hpp"
 #include "Image.hpp"
-#include "shapes/Shape.hpp"
 #include "utils.hpp"
+#include "shapes/Shape.hpp"
 
 class Scene {
 
@@ -49,19 +49,30 @@ public:
         bool debug = false
     ) const;
 
-    template<typename T> T& shape(std::unique_ptr<T>&& shape) {
-        static_assert(std::is_base_of<Shape, T>::value, "T must inherit from Shape");
-        this->shapes.push_back(std::move(shape));
+    /** Add a shape
+     * @tparam T shape type
+     * @tparam TArgs shape constructor argument types
+     * @param args shape constructor arguments
+     * @return reference to the added shape
+     */
+    template<typename T, typename... TArgs> T& shape(TArgs&&... args) {
+        static_assert(std::is_base_of_v<Shape, T>, "T must inherit from Shape");
+        this->shapes.push_back(std::make_unique<T>(std::forward<TArgs>(args)...));
         return *dynamic_cast<T*>(this->shapes[this->shapes.size() - 1].get());
     }
 
-    template<typename T> T& shape(int i) {
-        static_assert(std::is_base_of<Shape, T>::value, "T must inherit from Shape");
+    /** Get an existing shape by index
+     * @tparam T shape type
+     * @param i index, `0 <= i < this->shape_count()`
+     * @return reference to the shape
+     */
+    template<typename T> T& shape(const int i) {
+        static_assert(std::is_base_of_v<Shape, T>, "T must inherit from Shape");
         ASSERT(i >= 0 && i < this->shapes.size(), "Shape index out of bounds");
         return *dynamic_cast<T*>(this->shapes[i].get());
     }
 
-    int shape_count() { return this->shapes.size(); }
+    int shape_count() const { return this->shapes.size(); }
 };
 
 #endif // SCENE_HPP

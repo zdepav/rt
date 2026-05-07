@@ -44,7 +44,4 @@ set(Raytracer
     ${Texture}
 )
 
-add_executable(image01 image01.cpp ${Image})
-add_executable(image02 image02.cpp ${Image})
-add_executable(image05 image05.cpp ${Image})
 add_executable(raycast main.cpp ${Image} ${Raytracer})

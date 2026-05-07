@@ -11,7 +11,7 @@ Camera::Camera(const Vec3 position, const Vec3 target, const float fov, const fl
     ASSERT(position != target, "Camera position and target must be different");
     ASSERT(fov < 180, "FOV must be less than 180 degrees");
     ASSERT(far > 0, "Far plane must be in front of the camera");
-    if (std::abs(this->forward.x) < EPSILON and std::abs(this->forward.z) < EPSILON) {
+    if (feq(this->forward.x, 0) and feq(this->forward.z, 0)) {
         // edge case, camera points straight up or down
         this->up = Vec3::UNIT_X;
         this->right = Vec3::UNIT_Z;

@@ -1,17 +1,18 @@
 # rt
 
-A simple CPU-based raytracing implementation, supports basic meshes (sphere, cylinder, plane,
-flat circle, triangle, models imported from .obj files) and textures (images imported from .png and
-runtime-generated gradients).
+A simple unoptimized CPU-based raytracing implementation, supports basic meshes (sphere, cylinder,
+plane, flat circle, triangle, models imported from .obj files) and textures (images imported from
+.png and runtime-generated gradients).
 
-`main.cpp` renders 3 scenes:
+`main.cpp` renders 4 scenes demonstrating some of the implemented features:
 - **Winter**: .obj model import
 - **Spheres**: skybox and materials
 - **Reflection Box**: reflections inside enclosed space
+- **Tetrahedron**: overlaping shapes
 
-|       Winter        |       Spheres        |      Reflection Box      |
-|:-------------------:|:--------------------:|:------------------------:|
-| ![](out/winter.png) | ![](out/spheres.png) | ![](out/reflect_box.png) |
+|       Winter        |       Spheres        |      Reflection Box      |       Tetrahedron        |
+|:-------------------:|:--------------------:|:------------------------:|:------------------------:|
+| ![](out/winter.png) | ![](out/spheres.png) | ![](out/reflect_box.png) | ![](out/tetrahedron.png) |
 
 ## Dependencies
 

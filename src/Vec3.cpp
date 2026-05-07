@@ -1,10 +1,18 @@
 #include "Vec3.hpp"
 
 Vec3 Vec3::normalize() const {
+    if (*this == Vec3::ORIGIN) {
+        return Vec3::UNIT_X;
+    }
     return *this * (1 / this->magnitude());
 }
 
-Vec3 Vec3::to_length(float length) const {
+Vec3 Vec3::to_length(const float length) const {
+    if (feq(length, 0)) {
+        return Vec3::ORIGIN;
+    } else if (*this == Vec3::ORIGIN) {
+        return Vec3::UNIT_X * length;
+    }
     return *this * (length / this->magnitude());
 }
 
@@ -35,14 +43,19 @@ Vec3 Vec3::perpendicular() const {
 }
 
 float Vec3::angle(const Vec3 other) const {
-    return std::acos(
-        this->dot(other) / std::sqrt(this->magnitude_squared() * other.magnitude_squared())
-    );
+    float mag = this->magnitude_squared() * other.magnitude_squared();
+    if (mag <= 0.0f) {
+        return 0.0f;
+    }
+    return std::acos(this->dot(other) / std::sqrt(mag));
 }
 
+/** Project `this` onto `other` */
 Vec3 Vec3::project(const Vec3 other) const {
-    // Project `self` onto `other`, `other` must be normalized!
-    return this->dot(other) * other;
+    if (other == Vec3::ORIGIN) {
+        return Vec3::ORIGIN;
+    }
+    return other * (this->dot(other) / other.magnitude_squared());
 }
 
 const Vec3 Vec3::ORIGIN = Vec3(0.0f, 0.0f, 0.0f);

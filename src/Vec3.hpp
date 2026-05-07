@@ -225,7 +225,7 @@ struct Vec3 {
     Vec3& operator %=(const float b) { return *this = *this % b; }
 
     bool operator==(const Vec3& b) const {
-        return this->x == b.x && this->y == b.y && this->z == b.z;
+        return feq(this->x, b.x) and feq(this->y, b.y) and feq(this->z, b.z);
     }
 
     bool operator!=(const Vec3& b) const { return !this->operator==(b); }

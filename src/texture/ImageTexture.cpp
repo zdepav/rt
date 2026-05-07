@@ -1,6 +1,7 @@
 #include "ImageTexture.hpp"
 
 #include <cstdlib>
+#include <cmath>
 #include "../utils.hpp"
 
 std::unordered_map<
@@ -24,11 +25,14 @@ Image* ImageTexture::acquire_image(std::string& path) {
 
 bool ImageTexture::pixel_coord(
     float& x,
-    size_t size,
-    TilingMode mode,
+    const size_t size,
+    const TilingMode mode,
     size_t& c1,
     size_t& c2
 ) {
+    if (std::isnan(x) || std::isinf(x)) {
+        return false;
+    }
     if (mode == TILING_MODE_REPEAT) {
         x = apply_tiling_mode_repeat(x * size - 0.5f, size);
         c1 = (size_t)x;

@@ -3,7 +3,7 @@
 #include <cmath>
 #include "../utils.hpp"
 
-Triangle::Triangle(const Material* material, Vec3 a, Vec3 b, Vec3 c) :
+Triangle::Triangle(const Material* material, const Vec3 a, const Vec3 b, const Vec3 c) :
     Shape(material),
     vertices{a, b - a, c - a},
     colors{Vec3::UNIT, Vec3::UNIT, Vec3::UNIT},
@@ -12,8 +12,8 @@ Triangle::Triangle(const Material* material, Vec3 a, Vec3 b, Vec3 c) :
 
 Triangle::Triangle(
     const Material* material,
-    Vec3 a, Vec3 b, Vec3 c,
-    Vec3 a_color, Vec3 b_color, Vec3 c_color
+    const Vec3 a, const Vec3 b, const Vec3 c,
+    const Vec3 a_color, const Vec3 b_color, const Vec3 c_color
 ) : Shape(material),
     vertices{a, b - a, c - a},
     colors{a_color, b_color, c_color},
@@ -22,9 +22,9 @@ Triangle::Triangle(
 
 Triangle::Triangle(
     const Material* material,
-    Vec3 a, Vec3 b, Vec3 c,
-    Vec3 a_color, Vec3 b_color, Vec3 c_color,
-    Vec2 a_uv, Vec2 b_uv, Vec2 c_uv
+    const Vec3 a, const Vec3 b, const Vec3 c,
+    const Vec3 a_color, const Vec3 b_color, const Vec3 c_color,
+    const Vec2 a_uv, const Vec2 b_uv, const Vec2 c_uv
 ) : Shape(material),
     vertices{a, b - a, c - a},
     colors{a_color, b_color, c_color},

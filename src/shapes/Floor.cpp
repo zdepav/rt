@@ -5,7 +5,7 @@
 Floor::Floor(const Material* material, const float y) : Shape(material), y(y) { }
 
 bool Floor::intersect(const Ray& ray, Ray& reflected, float& best_distance) const {
-    if (std::abs(ray.direction.y) < EPSILON) {
+    if (feq(ray.direction.y, 0)) {
         return false;
     }
     const float t = (this->y - ray.origin.y) / ray.direction.y;

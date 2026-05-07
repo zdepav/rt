@@ -27,7 +27,7 @@ bool quadratic_roots(float a, const float b, const float c, float &hit1, float &
         return false;
     }
     discriminant = std::sqrt(discriminant);
-    const float b_term = (b < EPSILON ? discriminant : -discriminant) - b;
+    const float b_term = (feq(b, 0) ? discriminant : -discriminant) - b;
     if (hit1 > hit2) {
         hit1 = b_term / a;
         hit2 = 2.0f * c / b_term;
@@ -39,7 +39,7 @@ bool quadratic_roots(float a, const float b, const float c, float &hit1, float &
 }
 
 bool Cylinder::intersect(const Ray& ray, Ray& reflected, float& best_distance) const {
-    if (std::abs(ray.direction.dot(this->orientation) - 1) < EPSILON) {
+    if (feq(ray.direction.dot(this->orientation), 1)) {
         return false;
     }
     const Vec3 ro2c = ray.origin - this->center;
@@ -84,24 +84,24 @@ bool Cylinder::intersect(const Ray& ray, Ray& reflected, float& best_distance) c
 void Cylinder::add_top(Scene& scene, const Material* material) {
     if (!this->has_top) {
         this->has_top = true;
-        scene.shape(std::make_unique<Circle>(
+        scene.shape<Circle>(
             material ? material : this->material,
             this->center + this->orientation * this->half_length,
             this->orientation,
             this->radius
-        ));
+        );
     }
 }
 
 void Cylinder::add_bottom(Scene& scene, const Material* material) {
     if (!this->has_bottom) {
         this->has_bottom = true;
-        scene.shape(std::make_unique<Circle>(
+        scene.shape<Circle>(
             material ? material : this->material,
             this->center - this->orientation * this->half_length,
             -this->orientation,
             this->radius
-        ));
+        );
     }
 }
 

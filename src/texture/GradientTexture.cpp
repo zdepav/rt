@@ -5,10 +5,11 @@ GradientTexture::GradientTexture(
     const Vec3 to_color,
     const TilingMode htile,
     const TilingMode vtile
-) : Texture(htile, vtile), _colors {
-    GradientTexture::ColorStop(0.0f, from_color),
-    GradientTexture::ColorStop(1.0f, to_color)
-} { }
+) : Texture(htile, vtile),
+    _colors {
+        GradientTexture::ColorStop(0.0f, from_color),
+        GradientTexture::ColorStop(1.0f, to_color)
+    } { }
 
 void GradientTexture::add_color(const float position, const Vec3 color) {
     int i = 0;

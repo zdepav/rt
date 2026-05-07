@@ -1,6 +1,5 @@
 #include "Circle.hpp"
 
-#include <cmath>
 #include "../utils.hpp"
 
 Circle::Circle(const Material* material, const Vec3 center, const Vec3 normal, const float radius) :
@@ -15,7 +14,7 @@ Circle::Circle(const Material* material, const Vec3 center, const Vec3 normal, c
 
 bool Circle::intersect(const Ray& ray, Ray& reflected, float& best_distance) const {
     const float rn = this->normal.dot(ray.direction);
-    if (std::abs(rn) < EPSILON) {
+    if (feq(rn, 0)) {
         return false;
     }
     const float t = this->normal.dot(this->center - ray.origin) / rn;

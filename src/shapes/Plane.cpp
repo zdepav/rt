@@ -21,7 +21,7 @@ bool Plane::intersect(const Ray& ray, Ray& reflected, float& best_distance) cons
     reflected.source = (void*)this;
     reflected.color = Vec3::UNIT;
     if (this->material->texture) {
-        // TODO: implement?
+        // TODO: implement? will need an extra texture_scale field
         reflected.texcoord.x = 0;
         reflected.texcoord.y = 0;
     }

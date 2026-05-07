@@ -4,7 +4,6 @@
 #include <cmath>
 
 Scene::Scene() :
-    shapes(),
     light_direction(Vec3(0.0f, 0.0f, 1.0f)),
     light_color(Vec3(0.9f, 0.9f, 0.9f)),
     ambient_light(Vec3(0.1f, 0.1f, 0.1f)),

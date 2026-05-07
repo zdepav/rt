@@ -1,15 +1,11 @@
 #ifndef CYLINDER_SHAPE_HPP
 #define CYLINDER_SHAPE_HPP
 
-#include "../Vec3.hpp"
-
-#include <memory>
-#include <vector>
+#include "Shape.hpp"
 #include "../Material.hpp"
 #include "../Ray.hpp"
 #include "../Scene.hpp"
 #include "../Vec3.hpp"
-#include "Shape.hpp"
 
 class Cylinder final : public Shape {
 

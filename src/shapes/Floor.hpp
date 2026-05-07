@@ -1,10 +1,9 @@
 #ifndef FLOOR_SHAPE_HPP
 #define FLOOR_SHAPE_HPP
 
+#include "Shape.hpp"
 #include "../Material.hpp"
 #include "../Ray.hpp"
-#include "../Vec3.hpp"
-#include "Shape.hpp"
 
 class Floor : public Shape {
 
@@ -12,7 +11,7 @@ class Floor : public Shape {
 
 public:
 
-    Floor(const Material* material, float y = 0);
+    explicit Floor(const Material* material, float y = 0);
 
     bool intersect(const Ray& ray, Ray& reflected, float& best_distance) const override;
 };

@@ -6,17 +6,24 @@
 #include <string>
 #include "../utils.hpp"
 
-Mesh::Data::MeshFace::MeshFace(int v1, int v2, int v3) :
+Mesh::Data::MeshFace::MeshFace(const int v1, const int v2, const int v3) :
     vertices{v1 - 1, v2 - 1, v3 - 1},
     uvs{-1, -1, -1},
     normals{-1, -1, -1} { }
 
-Mesh::Data::MeshFace::MeshFace(int v1, int v2, int v3, int t1, int t2, int t3) :
+Mesh::Data::MeshFace::MeshFace(
+    const int v1, const int v2, const int v3,
+    const int t1, const int t2, const int t3
+) :
     vertices{v1 - 1, v2 - 1, v3 - 1},
     uvs{t1 - 1, t2 - 1, t3 - 1},
     normals{-1, -1, -1} { }
 
-Mesh::Data::MeshFace::MeshFace(int v1, int v2, int v3, int t1, int t2, int t3, int n1, int n2, int n3) :
+Mesh::Data::MeshFace::MeshFace(
+    const int v1, const int v2, const int v3,
+    const int t1, const int t2, const int t3,
+    const int n1, const int n2, const int n3
+) :
     vertices{v1 - 1, v2 - 1, v3 - 1},
     uvs{t1 - 1, t2 - 1, t3 - 1},
     normals{n1 - 1, n2 - 1, n3 - 1} { }

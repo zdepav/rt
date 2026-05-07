@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cmath>
 #include <ostream>
+#include "utils.hpp"
 
 #define VEC2_MAP(V, FUNC) Vec2(FUNC((V).x), FUNC((V).y))
 
@@ -150,7 +151,7 @@ struct Vec2 {
 
     Vec2& operator %=(const float b) { return *this = *this % b; }
 
-    bool operator==(const Vec2& b) const { return this->x == b.x && this->y == b.y; }
+    bool operator==(const Vec2& b) const { return feq(this->x, b.x) and feq(this->y, b.y); }
 
     bool operator!=(const Vec2& b) const { return !this->operator==(b); }
 
