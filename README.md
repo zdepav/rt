@@ -8,7 +8,7 @@ plane, flat circle, triangle, models imported from .obj files) and textures (ima
 - **Winter**: .obj model import
 - **Spheres**: skybox and materials
 - **Reflection Box**: reflections inside enclosed space
-- **Tetrahedron**: overlaping shapes
+- **Tetrahedron**: overlaping shapes, non-square output
 
 |       Winter        |       Spheres        |      Reflection Box      |       Tetrahedron        |
 |:-------------------:|:--------------------:|:------------------------:|:------------------------:|
